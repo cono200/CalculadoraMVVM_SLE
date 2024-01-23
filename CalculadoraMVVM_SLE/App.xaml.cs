@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalculadoraMVVM_SLE.Vista;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace CalculadoraMVVM_SLE
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new PaginaPrincipal();
         }
 
         protected override void OnStart()

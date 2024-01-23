@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalculadoraMVVM_SLE.VistaModelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace CalculadoraMVVM_SLE.Vista
         public PaginaPrincipal()
         {
             InitializeComponent();
+            BindingContext = new VMCalcular(Navigation);
         }
     }
 }
