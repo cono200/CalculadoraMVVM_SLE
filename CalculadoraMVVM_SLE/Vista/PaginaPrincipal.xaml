@@ -12,23 +12,23 @@
             <Button Text="AC" Command="{Binding Limpiarcomand}" FontSize="20" Grid.Column="0" Grid.Row="7" StyleClass="BotonesNaranja"></Button>
             <Button Command="{Binding }" FontSize="20" Grid.Column="1" Grid.Row="7" StyleClass="BotonesNaranja" ImageSource="https://i.ibb.co/pLx2y2R/borrar-1.png"></Button>
             <Button Text="%" Command="{Binding }" FontSize="20" Grid.Column="2" Grid.Row="7" StyleClass="BotonesNaranja"></Button>
-            <Button Text="÷" Command="{Binding }" FontSize="20" Grid.Column="3" Grid.Row="7" StyleClass="BotonesNaranja"></Button>
-            <Button Text="7" FontSize="20" Grid.Column="0" Grid.Row="8" StyleClass="Botones" ></Button>
-            <Button Text="8" FontSize="20" Grid.Column="1" Grid.Row="8" StyleClass="Botones" ></Button>
-            <Button Text="9" FontSize="20" Grid.Column="2" Grid.Row="8" StyleClass="Botones" ></Button>
-            <Button Text="x" Command="{Binding }" FontSize="20" Grid.Column="3" Grid.Row="8" StyleClass="BotonesNaranja"></Button>
+            <Button Text="÷" Command="{Binding  OperadorDividircomand}" FontSize="20" Grid.Column="3" Grid.Row="7" StyleClass="BotonesNaranja"></Button>
+            <Button Text="7" FontSize="20" Grid.Column="0" Grid.Row="8" StyleClass="Botones"  Command="{Binding OperadorNumero7comand}"></Button>
+            <Button Text="8" FontSize="20" Grid.Column="1" Grid.Row="8" StyleClass="Botones" Command="{Binding OperadorNumero8comand}" ></Button>
+            <Button Text="9" FontSize="20" Grid.Column="2" Grid.Row="8" StyleClass="Botones" Command="{Binding OperadorNumero9comand}" ></Button>
+            <Button Text="x" Command="{Binding OperadorMultiplicarcomand }" FontSize="20" Grid.Column="3" Grid.Row="8" StyleClass="BotonesNaranja"></Button>
             <Button Text="4" FontSize="20" Grid.Column="0" Grid.Row="9" StyleClass="Botones" Command="{Binding OperadorNumero4comand}" ></Button>
-            <Button Text="5" FontSize="20" Grid.Column="1" Grid.Row="9" StyleClass="Botones" ></Button>
-            <Button Text="6" FontSize="20" Grid.Column="2" Grid.Row="9" StyleClass="Botones" ></Button>
-            <Button Text="-" Command="{Binding }" FontSize="20" Grid.Column="3" Grid.Row="9" StyleClass="BotonesNaranja"></Button>
+            <Button Text="5" FontSize="20" Grid.Column="1" Grid.Row="9" StyleClass="Botones" Command="{Binding OperadorNumero5comand}" ></Button>
+            <Button Text="6" FontSize="20" Grid.Column="2" Grid.Row="9" StyleClass="Botones"  Command="{Binding OperadorNumero6comand}"></Button>
+            <Button Text="-" Command="{Binding OperadorRestarcomand }" FontSize="20" Grid.Column="3" Grid.Row="9" StyleClass="BotonesNaranja"></Button>
             <Button Text="1" FontSize="20" Grid.Column="0" Grid.Row="10" StyleClass="Botones" Command="{Binding OperadorNumero1comand}" ></Button>
             <Button Text="2" FontSize="20" Grid.Column="1" Grid.Row="10" StyleClass="Botones" Command="{Binding OperadorNumero2comand}" ></Button>
             <Button Text="3" FontSize="20" Grid.Column="2" Grid.Row="10" StyleClass="Botones"  Command="{Binding OperadorNumero3comand}"></Button>
-            <Button Text="+" Command="{Binding }" FontSize="20" Grid.Column="3" Grid.Row="10" StyleClass="BotonesNaranja"></Button>
+            <Button Text="+" Command="{Binding OperadorSumarcomand}" FontSize="20" Grid.Column="3" Grid.Row="10" StyleClass="BotonesNaranja"></Button>
             <Button Text="A" FontSize="20" Grid.Column="0" Grid.Row="11" StyleClass="Botones" ></Button>
             <Button Text="0" FontSize="20" Grid.Column="1" Grid.Row="11" StyleClass="Botones" ></Button>
             <Button Text="." FontSize="20" Grid.Column="2" Grid.Row="11" StyleClass="Botones" ></Button>
-            <Button Text="=" Command="{Binding }" FontSize="20" Grid.Column="3" Grid.Row="11" BackgroundColor="#C46234" TextColor="White" CornerRadius="500"></Button>
+            <Button Text="=" Command="{Binding ObtenerNumeroscomand }" FontSize="20" Grid.Column="3" Grid.Row="11" BackgroundColor="#C46234" TextColor="White" CornerRadius="500"></Button>
 
         </Grid>
     </StackLayout>

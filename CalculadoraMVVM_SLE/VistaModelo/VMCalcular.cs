@@ -12,8 +12,6 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         #region VARIABLES
         public double _numeroOperador1;
         public double _numeroOperador2;
-        public string _operadorTexto1;
-        public string _operadorTexto2;
         public string _resultado;
         public string _operadorSigno;
         public string _mostrarPantalla;
@@ -28,10 +26,18 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         public double _numero8;
         public double _numero9;
         public double _signoMultiplicar;
-        public double _signoRestar;
-        public double _signoSumar;
+        public bool _signoRestar;
+        public bool _signoSumar;
         public double _signoDividir;
         public string _mostrarDigito;
+        private bool _operadorAsignado;
+        public double mostrarDigitoApoyo;
+        private bool _operadorSumarBool;
+        private bool _operadorRestarBool;
+        private bool _operadorMultiplicarBool;
+        private bool _operadorDividirBool;
+        public string Operador;
+
 
 
 
@@ -54,16 +60,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             get { return _numeroOperador2; }
             set { SetValue(ref _numeroOperador2, value); }
         }
-        public string OperadorTexto1
-        {
-            get { return _operadorTexto1; }
-            set { SetValue(ref _operadorTexto1, value); }
-        }
-        public string OperadorTexto2
-        {
-            get { return _operadorTexto2; }
-            set { SetValue(ref _operadorTexto2, value); }
-        }
+        
         public string Resultado
         {
             get { return _resultado; }
@@ -134,6 +131,38 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             get { return _mostrarDigito; }
             set { SetValue(ref _mostrarDigito, value); }
         }
+        public bool OperadorAsignado
+        {
+            get { return _operadorAsignado; }
+            set { SetValue(ref _operadorAsignado, value); }
+        }
+        public bool SignoSumar
+        {
+            get { return _signoSumar; }
+            set { SetValue(ref _signoSumar, value); }
+        }
+        public bool OperadorSumarBool
+        {
+            get { return _operadorSumarBool; }
+            set { SetValue(ref _operadorSumarBool, value); }
+        }
+        public bool OperadorRestarBool
+        {
+            get { return _operadorRestarBool; }
+            set { SetValue(ref _operadorSumarBool, value); }
+        }
+         public bool OperadorMultiplicarBool
+        {
+            get { return _operadorMultiplicarBool; }
+            set { SetValue(ref _operadorMultiplicarBool, value); }
+        } 
+        public bool OperadorDividirBool
+        {
+            get { return _operadorDividirBool; }
+            set { SetValue(ref _operadorDividirBool, value); }
+        }
+
+      
 
         #endregion
         #region PROCESOS
@@ -190,51 +219,213 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
             MostrarDigito += "9";
         }
-        public void OperadorSumar()
-        {
-            MostrarDigito += "+";
-        }
-        public void OperadorRestar()
-        {
-            MostrarDigito += "-";
-        } 
-        public void OperadorMultiplicar()
-        {
-            MostrarDigito += "*";
-        } 
-         public void OperadorDividir()
-        {
-            MostrarDigito += "/";
-        } 
+        //public void OperadorSumar()
+        //{
+        //    OperadorAsignado = true;
+        //    ObtenerNumeros();
+        //    MostrarDigito = "+";
+        //    OperadorSumarBool = true;
+        //}
+
+
+        //public void OperadorRestar()
+        //{
+        //    OperadorAsignado = true;
+        //    ObtenerNumeros();
+        //    MostrarDigito = "-";
+        //    OperadorRestarBool = true;
+        //} 
+        //public void OperadorMultiplicar()
+        //{
+        //    OperadorAsignado = true;
+        //    ObtenerNumeros();
+        //    MostrarDigito = "*";
+        //    OperadorMultiplicarBool = true;
+
+        //} 
+        // public void OperadorDividir()
+        //{
+        //    OperadorAsignado = true;
+        //    ObtenerNumeros();
+        //    MostrarDigito = "÷";
+        //    OperadorDividirBool = true;
+        //} 
+
         
+
+
+
+
         public void Limpiar()
         {
             MostrarDigito = "";
         }
 
-     
+        //public void ObtenerNumeros()
+        //{
+        //    if (OperadorAsignado == true) //AQUI DEBE DE IR EL OPERADOR 
+        //    {
+        //        NumeroOperador1 = Convert.ToDouble(MostrarDigito);
+        //    }
+        //    else
+        //    {
+        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito);
+        //    }
+        //}
+        //public void ObtenerNumeros()
+        //{
+        //    if (!OperadorAsignado) // Si no se ha asignado un operador, entonces el número es el primer operando
+        //    {
+        //        NumeroOperador1 = Convert.ToDouble(MostrarDigito);
+        //        OperadorAsignado = true;
+        //    }
+        //    else
+        //    {
+        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito);
+        //    }
+        //}
+
+
+        //public void SumarNumeros()
+        //{
+        //    if (OperadorAsignado == true)
+        //    {
+        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
+        //        mostrarDigitoApoyo = NumeroOperador1 + NumeroOperador2;
+        //    }
+        //}
+        //public void RestarNumeros()
+        //{
+        //    if (OperadorAsignado == true)
+        //    {
+        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
+        //        mostrarDigitoApoyo = NumeroOperador1 - NumeroOperador2;
+        //    }
+        //} 
+        //public void MultiplicarNumeros()
+        //{
+        //    if (OperadorAsignado == true)
+        //    {
+        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito); 
+        //        mostrarDigitoApoyo = NumeroOperador1 * NumeroOperador2;
+        //    }
+        //}
+        //public void DividirNumeros()
+        //{
+        //    if (OperadorAsignado == true)
+        //    {
+        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
+        //        mostrarDigitoApoyo = NumeroOperador2 / NumeroOperador1;
+        //    }
+        //}
+
+        //public void MostrarNumeros()
+        //{
+        //    if (OperadorSumarBool == true)
+        //    {
+        //        SumarNumeros();
+
+        //    }
+        //    else if(OperadorRestarBool == true)
+        //    {
+        //        RestarNumeros();
+
+        //    }
+        //    else if(OperadorMultiplicarBool == true)
+        //    {
+        //        MultiplicarNumeros();
+
+        //    }
+        //    else if(OperadorDividirBool == true)
+        //    {
+        //        DividirNumeros();
+
+        //    }
+        //    MostrarDigito = Convert.ToString(mostrarDigitoApoyo);
+        //}
+
+
+        //AAAAA
+        public void OperadorSumar()
+        {
+            ObtenerNumeros();
+            MostrarDigito = "+";
+            OperadorSumarBool = true;
+        }
+
+        public void OperadorRestar()
+        {
+            ObtenerNumeros();
+            MostrarDigito = "-";
+            OperadorRestarBool = true;
+        }
+
+        public void OperadorMultiplicar()
+        {
+            ObtenerNumeros();
+            MostrarDigito = "*";
+            OperadorMultiplicarBool = true;
+        }
+
+        public void OperadorDividir()
+        {
+            ObtenerNumeros();
+            MostrarDigito = "/";
+            OperadorDividirBool = true;
+        }
 
         public void ObtenerNumeros()
         {
-            if (MostrarDigito == "")
+            if (!OperadorAsignado) // Si no se ha asignado un operador, entonces el número es el primer operando
             {
                 NumeroOperador1 = Convert.ToDouble(MostrarDigito);
-                
+                OperadorAsignado = true;
             }
             else
             {
-                NumeroOperador2 += Convert.ToDouble(MostrarDigito);
+                NumeroOperador2 = Convert.ToDouble(MostrarDigito);
             }
-            
+        }
+
+        public void SumarNumeros()
+        {
+            mostrarDigitoApoyo = NumeroOperador1 + NumeroOperador2;
+        }
+
+        public void RestarNumeros()
+        {
+            mostrarDigitoApoyo = NumeroOperador1 - NumeroOperador2;
+        }
+
+        public void MultiplicarNumeros()
+        {
+            mostrarDigitoApoyo = NumeroOperador1 * NumeroOperador2;
+        }
+
+        public void DividirNumeros()
+        {
+            mostrarDigitoApoyo = NumeroOperador1 / NumeroOperador2;
         }
 
         public void MostrarNumeros()
         {
-            OperadorNumero1();
-            OperadorNumero2();
-            OperadorNumero3();
-
-
+            if (OperadorSumarBool == true)
+            {
+                SumarNumeros();
+            }
+            else if (OperadorRestarBool == true)
+            {
+                RestarNumeros();
+            }
+            else if (OperadorMultiplicarBool == true)
+            {
+                MultiplicarNumeros();
+            }
+            else if (OperadorDividirBool == true)
+            {
+                DividirNumeros();
+            }
+            MostrarDigito = Convert.ToString(mostrarDigitoApoyo);
         }
 
 
@@ -255,6 +446,8 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         public ICommand OperadorNumero9comand => new Command(OperadorNumero9);
         public ICommand OperadorSumarcomand => new Command(OperadorSumar);
         public ICommand OperadorRestarcomand => new Command(OperadorRestar);
+        public ICommand OperadorMultiplicarcomand => new Command(OperadorMultiplicar);
+        public ICommand OperadorDividircomand => new Command(OperadorDividir);
 
         public ICommand ObtenerNumeroscomand => new Command(MostrarNumeros);
         #endregion
