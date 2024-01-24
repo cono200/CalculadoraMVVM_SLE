@@ -14,7 +14,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         public double _numeroOperador2;
         public double _resultado; //AUXILIAR
         public string _operadorSigno;
-        public string _mostrarPantalla;
+        public string _mostrarSigno;
         public bool _numero0;
         public bool _numero1;
         public bool _numero2;
@@ -72,10 +72,10 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             get { return _operadorSigno; }
             set { SetValue(ref _operadorSigno, value); }
         } 
-        public string MostrarPantalla
+        public string MostrarSigno
         {
-            get { return _mostrarPantalla; }
-            set { SetValue(ref _mostrarPantalla, value); }
+            get { return _mostrarSigno; }
+            set { SetValue(ref _mostrarSigno, value); }
         }
         public bool Numero0
         {
@@ -192,7 +192,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
 
             MostrarDigito += "1";
-            Contador++;
+            
             
 
         }
@@ -200,55 +200,55 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
 
             MostrarDigito += "0";
-            Contador++;
+            
             
 
         }
         public void OperadorNumero2()
         {
             MostrarDigito += "2";
-            Contador++;
+            
         } 
         public void OperadorNumero3()
         {
             MostrarDigito += "3";
-            Contador++;
+            
         } 
         public void OperadorNumero4()
         {
             MostrarDigito += "4";
-            Contador++;
+            
         }
         public void OperadorNumero5()
         {
             MostrarDigito += "5";
-            Contador++;
+            
         }
         public void OperadorNumero6()
         {
             MostrarDigito += "6";
-            Contador++;
+           
         }
         public void OperadorNumero7()
         {
             MostrarDigito += "7";
-            Contador++;
+           
         } 
         public void OperadorNumero8()
         {
             MostrarDigito += "8";
-            Contador++;
+            
         }
         public void OperadorNumero9()
         {
             MostrarDigito += "9";
-            Contador++;
+            
         }
         public void OperadorSumar()
         {
             OperadorAsignado = true;
             ObtenerNumeros();
-            MostrarDigito = "+";
+            //MostrarSigno += " + ";
             OperadorSumarBool = true;
         }
 
@@ -257,14 +257,15 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
             OperadorAsignado = true;
             ObtenerNumeros();
-            MostrarDigito = "-";
+            //MostrarSigno += " - ";
             OperadorRestarBool = true;
         }
         public void OperadorMultiplicar()
         {
+           // MostrarSigno += " * ";
             OperadorAsignado = true;
             ObtenerNumeros();
-            MostrarDigito = "*";
+            
             OperadorMultiplicarBool = true;
 
         }
@@ -272,7 +273,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
             OperadorAsignado = true;
             ObtenerNumeros();
-            MostrarDigito = "÷";
+            //MostrarSigno = "÷";
             OperadorDividirBool = true;
         }
 
@@ -292,15 +293,23 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             if ( NumeroOperador1 == 0 )
             {
                 NumeroOperador1 = Convert.ToDouble(MostrarDigito);
+               
+
+
+
             }
            
             else if(MostrarDigito == Convert.ToString(Auxiliar))
             {
-                MostrarDigito = "";
+                MostrarDigito = string.Empty;
             }
+
             else
             {
+                
                 NumeroOperador2 = Convert.ToDouble(MostrarDigito);
+
+                
             }
             
             
@@ -309,14 +318,12 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             
         }
 
-
-
+      
         public void SumarNumeros()
         {
             ObtenerNumeros();
             if (OperadorAsignado == true)
             {
-                 // Asignar el segundo número antes de sumar
                 mostrarDigitoApoyo = NumeroOperador1 + NumeroOperador2;
             }
         }
@@ -325,7 +332,6 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             ObtenerNumeros();
             if (OperadorAsignado == true)
             {
-                NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
                 mostrarDigitoApoyo = NumeroOperador1 - NumeroOperador2;
             }
         }
@@ -334,8 +340,8 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         ObtenerNumeros();
             if (OperadorAsignado == true)
             {
-                NumeroOperador2 = Convert.ToDouble(MostrarDigito);
                 mostrarDigitoApoyo = NumeroOperador1 * NumeroOperador2;
+                
             }
         }
         public void DividirNumeros()
@@ -343,7 +349,6 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             ObtenerNumeros();
             if (OperadorAsignado == true)
             {
-                NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
                 mostrarDigitoApoyo = NumeroOperador2 / NumeroOperador1;
             }
         }
@@ -374,13 +379,6 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             MostrarDigito = Convert.ToString(mostrarDigitoApoyo);
             
         }
-
-
-        
-
-        
-
-
 
         #endregion
         #region COMANDOS
