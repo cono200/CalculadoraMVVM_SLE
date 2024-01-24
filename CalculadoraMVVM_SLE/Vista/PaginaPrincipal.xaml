@@ -26,7 +26,7 @@
             <Button Text="3" FontSize="20" Grid.Column="2" Grid.Row="10" StyleClass="Botones"  Command="{Binding OperadorNumero3comand}"></Button>
             <Button Text="+" Command="{Binding OperadorSumarcomand}" FontSize="20" Grid.Column="3" Grid.Row="10" StyleClass="BotonesNaranja"></Button>
             <Button Text="A" FontSize="20" Grid.Column="0" Grid.Row="11" StyleClass="Botones" ></Button>
-            <Button Text="0" FontSize="20" Grid.Column="1" Grid.Row="11" StyleClass="Botones" ></Button>
+            <Button Text="0" FontSize="20" Grid.Column="1" Grid.Row="11" StyleClass="Botones" Command="{Binding OperadorNumero0comand}"  ></Button>
             <Button Text="." FontSize="20" Grid.Column="2" Grid.Row="11" StyleClass="Botones" ></Button>
             <Button Text="=" Command="{Binding ObtenerNumeroscomand }" FontSize="20" Grid.Column="3" Grid.Row="11" BackgroundColor="#C46234" TextColor="White" CornerRadius="500"></Button>
 

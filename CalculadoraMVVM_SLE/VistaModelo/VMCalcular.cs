@@ -12,7 +12,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         #region VARIABLES
         public double _numeroOperador1;
         public double _numeroOperador2;
-        public string _resultado;
+        public double _resultado; //AUXILIAR
         public string _operadorSigno;
         public string _mostrarPantalla;
         public bool _numero0;
@@ -37,8 +37,9 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         private bool _operadorMultiplicarBool;
         private bool _operadorDividirBool;
         public string Operador;
+        private bool _numeroSeleccionado;
 
-
+         private double _contador;
 
 
         #endregion
@@ -61,7 +62,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             set { SetValue(ref _numeroOperador2, value); }
         }
         
-        public string Resultado
+        public double Auxiliar
         {
             get { return _resultado; }
             set { SetValue(ref _resultado, value); }
@@ -160,7 +161,18 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
             get { return _operadorDividirBool; }
             set { SetValue(ref _operadorDividirBool, value); }
+        } 
+        public bool NumeroSeleccionado
+        {
+            get { return _numeroSeleccionado; }
+            set { SetValue(ref _numeroSeleccionado, value); }
         }
+        public double Contador
+        {
+            get { return _contador; }
+            set { SetValue(ref _contador, value); }
+        }
+
 
       
 
@@ -180,78 +192,91 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
 
             MostrarDigito += "1";
-            Numero1 = true;
+            Contador++;
+            
+
+        }
+        public void OperadorNumero0()
+        {
+
+            MostrarDigito += "0";
+            Contador++;
             
 
         }
         public void OperadorNumero2()
         {
             MostrarDigito += "2";
-            Numero2 = true;
+            Contador++;
         } 
         public void OperadorNumero3()
         {
             MostrarDigito += "3";
-            Numero3 = true;
+            Contador++;
         } 
         public void OperadorNumero4()
         {
             MostrarDigito += "4";
-            Numero4 = true;
+            Contador++;
         }
         public void OperadorNumero5()
         {
             MostrarDigito += "5";
+            Contador++;
         }
         public void OperadorNumero6()
         {
             MostrarDigito += "6";
+            Contador++;
         }
         public void OperadorNumero7()
         {
             MostrarDigito += "7";
+            Contador++;
         } 
         public void OperadorNumero8()
         {
             MostrarDigito += "8";
+            Contador++;
         }
         public void OperadorNumero9()
         {
             MostrarDigito += "9";
+            Contador++;
         }
-        //public void OperadorSumar()
-        //{
-        //    OperadorAsignado = true;
-        //    ObtenerNumeros();
-        //    MostrarDigito = "+";
-        //    OperadorSumarBool = true;
-        //}
+        public void OperadorSumar()
+        {
+            OperadorAsignado = true;
+            ObtenerNumeros();
+            MostrarDigito = "+";
+            OperadorSumarBool = true;
+        }
 
 
-        //public void OperadorRestar()
-        //{
-        //    OperadorAsignado = true;
-        //    ObtenerNumeros();
-        //    MostrarDigito = "-";
-        //    OperadorRestarBool = true;
-        //} 
-        //public void OperadorMultiplicar()
-        //{
-        //    OperadorAsignado = true;
-        //    ObtenerNumeros();
-        //    MostrarDigito = "*";
-        //    OperadorMultiplicarBool = true;
+        public void OperadorRestar()
+        {
+            OperadorAsignado = true;
+            ObtenerNumeros();
+            MostrarDigito = "-";
+            OperadorRestarBool = true;
+        }
+        public void OperadorMultiplicar()
+        {
+            OperadorAsignado = true;
+            ObtenerNumeros();
+            MostrarDigito = "*";
+            OperadorMultiplicarBool = true;
 
-        //} 
-        // public void OperadorDividir()
-        //{
-        //    OperadorAsignado = true;
-        //    ObtenerNumeros();
-        //    MostrarDigito = "÷";
-        //    OperadorDividirBool = true;
-        //} 
+        }
+        public void OperadorDividir()
+        {
+            OperadorAsignado = true;
+            ObtenerNumeros();
+            MostrarDigito = "÷";
+            OperadorDividirBool = true;
+        }
 
-        
+
 
 
 
@@ -261,150 +286,66 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             MostrarDigito = "";
         }
 
-        //public void ObtenerNumeros()
-        //{
-        //    if (OperadorAsignado == true) //AQUI DEBE DE IR EL OPERADOR 
-        //    {
-        //        NumeroOperador1 = Convert.ToDouble(MostrarDigito);
-        //    }
-        //    else
-        //    {
-        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito);
-        //    }
-        //}
-        //public void ObtenerNumeros()
-        //{
-        //    if (!OperadorAsignado) // Si no se ha asignado un operador, entonces el número es el primer operando
-        //    {
-        //        NumeroOperador1 = Convert.ToDouble(MostrarDigito);
-        //        OperadorAsignado = true;
-        //    }
-        //    else
-        //    {
-        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito);
-        //    }
-        //}
-
-
-        //public void SumarNumeros()
-        //{
-        //    if (OperadorAsignado == true)
-        //    {
-        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
-        //        mostrarDigitoApoyo = NumeroOperador1 + NumeroOperador2;
-        //    }
-        //}
-        //public void RestarNumeros()
-        //{
-        //    if (OperadorAsignado == true)
-        //    {
-        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
-        //        mostrarDigitoApoyo = NumeroOperador1 - NumeroOperador2;
-        //    }
-        //} 
-        //public void MultiplicarNumeros()
-        //{
-        //    if (OperadorAsignado == true)
-        //    {
-        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito); 
-        //        mostrarDigitoApoyo = NumeroOperador1 * NumeroOperador2;
-        //    }
-        //}
-        //public void DividirNumeros()
-        //{
-        //    if (OperadorAsignado == true)
-        //    {
-        //        NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
-        //        mostrarDigitoApoyo = NumeroOperador2 / NumeroOperador1;
-        //    }
-        //}
-
-        //public void MostrarNumeros()
-        //{
-        //    if (OperadorSumarBool == true)
-        //    {
-        //        SumarNumeros();
-
-        //    }
-        //    else if(OperadorRestarBool == true)
-        //    {
-        //        RestarNumeros();
-
-        //    }
-        //    else if(OperadorMultiplicarBool == true)
-        //    {
-        //        MultiplicarNumeros();
-
-        //    }
-        //    else if(OperadorDividirBool == true)
-        //    {
-        //        DividirNumeros();
-
-        //    }
-        //    MostrarDigito = Convert.ToString(mostrarDigitoApoyo);
-        //}
-
-
-        //AAAAA
-        public void OperadorSumar()
-        {
-            ObtenerNumeros();
-            MostrarDigito = "+";
-            OperadorSumarBool = true;
-        }
-
-        public void OperadorRestar()
-        {
-            ObtenerNumeros();
-            MostrarDigito = "-";
-            OperadorRestarBool = true;
-        }
-
-        public void OperadorMultiplicar()
-        {
-            ObtenerNumeros();
-            MostrarDigito = "*";
-            OperadorMultiplicarBool = true;
-        }
-
-        public void OperadorDividir()
-        {
-            ObtenerNumeros();
-            MostrarDigito = "/";
-            OperadorDividirBool = true;
-        }
-
         public void ObtenerNumeros()
         {
-            if (!OperadorAsignado) // Si no se ha asignado un operador, entonces el número es el primer operando
+
+            if ( NumeroOperador1 == 0 )
             {
                 NumeroOperador1 = Convert.ToDouble(MostrarDigito);
-                OperadorAsignado = true;
+            }
+           
+            else if(MostrarDigito == Convert.ToString(Auxiliar))
+            {
+                MostrarDigito = "";
             }
             else
             {
                 NumeroOperador2 = Convert.ToDouble(MostrarDigito);
             }
+            
+            
+            
+            
+            
         }
+
+
 
         public void SumarNumeros()
         {
-            mostrarDigitoApoyo = NumeroOperador1 + NumeroOperador2;
+            ObtenerNumeros();
+            if (OperadorAsignado == true)
+            {
+                 // Asignar el segundo número antes de sumar
+                mostrarDigitoApoyo = NumeroOperador1 + NumeroOperador2;
+            }
         }
-
         public void RestarNumeros()
         {
-            mostrarDigitoApoyo = NumeroOperador1 - NumeroOperador2;
+            ObtenerNumeros();
+            if (OperadorAsignado == true)
+            {
+                NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
+                mostrarDigitoApoyo = NumeroOperador1 - NumeroOperador2;
+            }
         }
-
         public void MultiplicarNumeros()
         {
-            mostrarDigitoApoyo = NumeroOperador1 * NumeroOperador2;
+        ObtenerNumeros();
+            if (OperadorAsignado == true)
+            {
+                NumeroOperador2 = Convert.ToDouble(MostrarDigito);
+                mostrarDigitoApoyo = NumeroOperador1 * NumeroOperador2;
+            }
         }
-
         public void DividirNumeros()
         {
-            mostrarDigitoApoyo = NumeroOperador1 / NumeroOperador2;
+            ObtenerNumeros();
+            if (OperadorAsignado == true)
+            {
+                NumeroOperador2 = Convert.ToDouble(MostrarDigito); // Asignar el segundo número antes de sumar
+                mostrarDigitoApoyo = NumeroOperador2 / NumeroOperador1;
+            }
         }
 
         public void MostrarNumeros()
@@ -412,22 +353,32 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             if (OperadorSumarBool == true)
             {
                 SumarNumeros();
+               
+
             }
             else if (OperadorRestarBool == true)
             {
                 RestarNumeros();
+
             }
             else if (OperadorMultiplicarBool == true)
             {
                 MultiplicarNumeros();
+
             }
             else if (OperadorDividirBool == true)
             {
                 DividirNumeros();
+
             }
             MostrarDigito = Convert.ToString(mostrarDigitoApoyo);
+            
         }
 
+
+        
+
+        
 
 
 
@@ -435,6 +386,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         #region COMANDOS
         public ICommand ProcesoAsyncomand => new Command(async () => await ProcesoAsyncrono());
         public ICommand Limpiarcomand => new Command(Limpiar);
+        public ICommand OperadorNumero0comand => new Command(OperadorNumero0);
         public ICommand OperadorNumero1comand => new Command(OperadorNumero1);
         public ICommand OperadorNumero2comand => new Command(OperadorNumero2);
         public ICommand OperadorNumero3comand => new Command(OperadorNumero3);
