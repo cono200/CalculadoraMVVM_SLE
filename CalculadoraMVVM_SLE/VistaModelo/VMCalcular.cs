@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -150,7 +151,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         public bool OperadorRestarBool
         {
             get { return _operadorRestarBool; }
-            set { SetValue(ref _operadorSumarBool, value); }
+            set { SetValue(ref _operadorRestarBool, value); }
         }
          public bool OperadorMultiplicarBool
         {
@@ -248,7 +249,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
             OperadorAsignado = true;
             ObtenerNumeros();
-            //MostrarSigno += " + ";
+            MostrarDigito += "+";
             OperadorSumarBool = true;
         }
 
@@ -257,15 +258,16 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
             OperadorAsignado = true;
             ObtenerNumeros();
-            //MostrarSigno += " - ";
+            MostrarDigito += "-";
             OperadorRestarBool = true;
         }
+
         public void OperadorMultiplicar()
         {
-           // MostrarSigno += " * ";
+            MostrarDigito += "*";
             OperadorAsignado = true;
             ObtenerNumeros();
-            
+
             OperadorMultiplicarBool = true;
 
         }
@@ -273,7 +275,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         {
             OperadorAsignado = true;
             ObtenerNumeros();
-            //MostrarSigno = "÷";
+            MostrarDigito = "÷";
             OperadorDividirBool = true;
         }
 
@@ -285,40 +287,33 @@ namespace CalculadoraMVVM_SLE.VistaModelo
         public void Limpiar()
         {
             MostrarDigito = "";
+            NumeroOperador1= 0;
+            NumeroOperador2= 0;
         }
 
         public void ObtenerNumeros()
         {
+            
+            string digitoLimpio = new string(MostrarDigito.Where(char.IsDigit).ToArray());
 
-            if ( NumeroOperador1 == 0 )
+            if (!string.IsNullOrEmpty(digitoLimpio))
             {
-                NumeroOperador1 = Convert.ToDouble(MostrarDigito);
-               
-
-
-
-            }
-           
-            else if(MostrarDigito == Convert.ToString(Auxiliar))
-            {
-                MostrarDigito = string.Empty;
-            }
-
-            else
-            {
-                
-                NumeroOperador2 = Convert.ToDouble(MostrarDigito);
+                if (NumeroOperador1 == 0)
+                {
+                    NumeroOperador1 = Convert.ToDouble(digitoLimpio);
+                }
+                else
+                {
+                    NumeroOperador2 = Convert.ToDouble(digitoLimpio);
+                }
 
                 
+                MostrarDigito = "";
             }
-            
-            
-            
-            
-            
         }
+        
 
-      
+
         public void SumarNumeros()
         {
             ObtenerNumeros();
@@ -358,7 +353,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
             if (OperadorSumarBool == true)
             {
                 SumarNumeros();
-               
+
 
             }
             else if (OperadorRestarBool == true)
@@ -377,7 +372,7 @@ namespace CalculadoraMVVM_SLE.VistaModelo
 
             }
             MostrarDigito = Convert.ToString(mostrarDigitoApoyo);
-            
+
         }
 
         #endregion
